@@ -3,7 +3,22 @@ use CodeIgniter\Model;
 
 class Auth_model extends Model
 {
+    protected $table = "t_user";
     
+    public function checkAuth()
+    {
+        return (session()->get('logged_in') == true) ? true : false;
+    }
+    public function checkLoginAuth($nama,$password)
+    {
+        $p = $this->db->table($this->table);
+        $check_valid =  $p->select('role')->getWhere(['nama_user'=>$nama,'password'=>$password])->getFieldCount();
+        if($check_valid ==1){
+            return $p->select('nama_user,role')->get()->getResultArray();
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>
