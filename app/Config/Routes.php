@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('pagescontroller');
+$routes->setDefaultController('authcontroller');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,11 +30,14 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'authcontroller::index');
-
-$routes->get('/view/dashboard','pagescontroller::index');
+$routes->get('/', 'AuthController::index');
 
 
+
+// pages view
+$routes->get('/view/dashboard','PagesController::index');
+$routes->get('/view/management/user','PagesController::management_user');
+$routes->get('/view/management/buku','PagesController::management_buku');
 
 /**
  * --------------------------------------------------------------------

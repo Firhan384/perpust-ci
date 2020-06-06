@@ -12,9 +12,9 @@ class Auth_model extends Model
     public function checkLoginAuth($nama,$password)
     {
         $p = $this->db->table($this->table);
-        $check_valid =  $p->select('role')->getWhere(['nama_user'=>$nama,'password'=>$password])->getFieldCount();
-        if($check_valid ==1){
-            return $p->select('nama_user,role')->get()->getResultArray();
+        $check_valid =  $p->select('role')->getWhere(['nama_user'=>$nama,'password'=>$password])->resultID->num_rows;
+        if($check_valid == 1){
+            return true;
         } else {
             return false;
         }

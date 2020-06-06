@@ -87,8 +87,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="login.html">User</a>
-            <a class="collapse-item" href="register.html">Buku</a>
+            <a class="collapse-item" href="<?= base_url('/view/management/user') ?>">User</a>
+            <a class="collapse-item" href="<?= base_url('/view/management/buku') ?>">Buku</a>
             <a class="collapse-item" href="forgot-password.html">Kategori Buku</a>
             <a class="collapse-item" href="404.html">Siswa</a>
           </div>
@@ -253,7 +253,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('username') ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -328,14 +328,11 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="<?= base_url('AuthController/ActionLogout') ?>">Logout</a>
         </div>
       </div>
     </div>
   </div>
-  
-  <!-- defined routes base_url  -->
-  <script>var base_url = "<?= base_url() ?>";</script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="<?= base_url('assets/jquery/jquery.min.js') ?>"></script>
@@ -352,6 +349,15 @@
 
   <!-- Custom JS -->
   <script src="<?= base_url($js)?>"></script>
+
+    <!-- defined routes base_url  -->
+  <script>
+    var base_url = "<?= base_url() ?>";
+    $.ajax({
+      url: "your url",
+      headers: {'X-Requested-With': 'XMLHttpRequest'}
+    });
+  </script>
 
 </body>
 
