@@ -4,14 +4,10 @@ use App\Models\Auth_model;
 class AuthController extends BaseController
 {
     protected $call_model;
+    
     public function __construct()
     {   
         $this->call_model = new Auth_model();
-        if($this->call_model->checkAuth()){
-            return redirect()->to('/view/dashboard');
-        } else {
-            return redirect()->to('/');
-        }
     }
 
     public function index()

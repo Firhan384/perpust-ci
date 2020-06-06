@@ -33,11 +33,12 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'AuthController::index');
 
 
-
-// pages view
-$routes->get('/view/dashboard','PagesController::index');
-$routes->get('/view/management/user','PagesController::management_user');
-$routes->get('/view/management/buku','PagesController::management_buku');
+// pages panel administrator view
+$pages = [];
+$pages['/view/dashboard'] = 'PagesController::index';
+$pages['/view/management/user'] = 'PagesController::management_user';
+$pages['/view/management/buku'] = 'PagesController::management_buku';
+$routes->map($pages,['filter'=>'auth']);
 
 /**
  * --------------------------------------------------------------------
